@@ -15,12 +15,10 @@ ADD runconfig.sh /tmp/
 RUN mv /etc/samba/smb.conf /etc/samba/smb.conf.orig 
 RUN mv /tmp/smb.conf /etc/samba/
 
-# Put the services that need to be started into the bashrc file
-RUN echo "service rpcbind start" >> ~/.bashrc && \
-chmod +x /tmp/runconfig.sh && \
-echo "/tmp/./runconfig.sh" >> ~/.bashrc
-
-CMD /bin/bash
+# Run start to start services
+ADD start.sh /bin/start.sh
+RUN chmod a+x /bin/start.sh
+CMD ["./bin/start.sh"]
 
 # Expose ports
 EXPOSE 445
