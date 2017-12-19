@@ -1,11 +1,11 @@
-# Set base image to Ubuntu
+# Set base image to Ubuntu (latest version)
 FROM ubuntu:latest
 
 # Update
 RUN apt-get update && apt-get upgrade -y
 
 # Install Samba 
-RUN apt-get install samba
+RUN apt install samba
 
 # Expose ports
 EXPOSE 445
