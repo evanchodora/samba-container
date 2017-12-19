@@ -11,6 +11,9 @@ RUN apt install samba
 ADD smb.conf /tmp/
 ADD runconfig.sh /tmp/
 
+# Add directory to mount volume
+RUN mkdir /storage/
+
 # Move the Samba Conf file to correct location
 RUN mv /etc/samba/smb.conf /etc/samba/smb.conf.orig 
 RUN mv /tmp/smb.conf /etc/samba/
